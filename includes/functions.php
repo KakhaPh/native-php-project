@@ -14,3 +14,9 @@ function fetchItemById($pdo, $id) {
     $stmt->execute(['id' => $id]);
     return $stmt->fetch(PDO::FETCH_ASSOC);
 }
+
+// Add a new item
+function addItem($pdo, $name, $description) {
+    $stmt = $pdo->prepare("INSERT INTO items (name, description) VALUES (:name, :description)");
+    $stmt->execute(['name' => $name, 'description' => $description]);
+}
