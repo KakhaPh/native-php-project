@@ -26,3 +26,9 @@ function updateItem($pdo, $id, $name, $description) {
     $stmt = $pdo->prepare("UPDATE items SET name = :name, description = :description WHERE id = :id");
     $stmt->execute(['id' => $id, 'name' => $name, 'description' => $description]);
 }
+
+// Delete an item
+function deleteItem($pdo, $id) {
+    $stmt = $pdo->prepare("DELETE FROM items WHERE id = :id");
+    $stmt->execute(['id' => $id]);
+}
