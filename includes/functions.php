@@ -9,3 +9,8 @@ function fetchItems($pdo) {
 }
 
 // Fetch a single item by ID 
+function fetchItemById($pdo, $id) {
+    $stmt = $pdo->prepare("SELECT * FROM items WHERE id = :id");
+    $stmt->execute(['id' => $id]);
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
