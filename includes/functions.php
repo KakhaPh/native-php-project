@@ -20,3 +20,9 @@ function addItem($pdo, $name, $description) {
     $stmt = $pdo->prepare("INSERT INTO items (name, description) VALUES (:name, :description)");
     $stmt->execute(['name' => $name, 'description' => $description]);
 }
+
+// Update an item 
+function updateItem($pdo, $id, $name, $description) {
+    $stmt = $pdo->prepare("UPDATE items SET name = :name, description = :description WHERE id = :id");
+    $stmt->execute(['id' => $id, 'name' => $name, 'description' => $description]);
+}
